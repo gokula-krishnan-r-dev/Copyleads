@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 const Signup = () => {
   return (
@@ -105,7 +106,7 @@ const Signup = () => {
             <div className="relative pb-1">
               <label
                 for="first_name"
-                class="block ml-1 mb-2 text-sm font-medium text-[#48535F] "
+                class="block ml-1 mb-2 text-sm font-normal text-[#48535F] "
               >
                 Sign Up
               </label>
@@ -140,31 +141,20 @@ const Signup = () => {
                 placeholder="Confirm Password"
               />
             </div>
-            <div className="py-2 space-x-2 flex px-1 items-center">
-              <input className="w-[14px] h-[14px]" type="checkbox" />
-              <span className="not-italic font-light leading-4 text-justify text-gray-600">
-                Remember Me
-              </span>
-            </div>
             <button
               type="submit"
-              className="py-2 mb-3 mt-3 rounded-[6px] w-full text-base leading-5 font-normal text-white bg-[#48535F] px-6"
+              className="py-2.5 mb-3 mt-3 rounded-[6px] w-full text-base leading-5 font-normal text-white bg-[#48535F] px-6"
             >
-              Submit
+              Sign Up
             </button>
-            <div className="flex items-center justify-between">
-              <div />
-              <button className="not-italic font-normal underline text-base leading-6 text-justify text-gray-600">
-                Forgot Password?
-              </button>
-            </div>
             <div className="h-[1px] border md:my-4 my-2 border-[#525D6966]" />
             <h4 className="not-italic mt-2 mb-0 text-center font-normal text-sm leading-5  text-gray-700">
-              Don’t have an account?{" "}
-              <button className="text-[#48535F] font-semibold">
-                Create a new
-              </button>{" "}
-              one for Free.
+              Already have an account.
+              <Link to="/login" className="text-[#48535F] font-semibold">
+                {" "}
+                Log{" "}
+              </Link>{" "}
+              in from here
             </h4>
           </div>
         </div>

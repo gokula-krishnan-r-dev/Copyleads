@@ -3,9 +3,7 @@
 * {
   font-family: "Poppins", sans-serif;
 }
-.active {
-  font-weight: 900;
-}
-.Bold {
-  font-weight: 900 !important;
+
+.react-modal__content {
+  background-color: rgb(153 153 153) !important;
 }

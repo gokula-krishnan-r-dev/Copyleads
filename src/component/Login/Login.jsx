@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 const Login = () => {
   return (
@@ -105,7 +106,7 @@ const Login = () => {
             <div className="relative pb-1">
               <label
                 for="first_name"
-                class="block mb-2  ml-1 text-sm font-medium text-[#48535F] "
+                class="block mb-2  ml-1 text-sm font-normal text-[#48535F] "
               >
                 Login
               </label>
@@ -145,9 +146,9 @@ const Login = () => {
             <div className="h-[1px] border md:my-4 my-2 border-[#525D6966]" />
             <h4 className="not-italic mt-2 mb-4 text-center font-normal text-sm leading-5  text-gray-700">
               Don’t have an account?{" "}
-              <button className="text-[#48535F] font-semibold">
+              <Link to="/Signup" className="text-[#48535F] font-semibold">
                 Create a new
-              </button>{" "}
+              </Link>{" "}
               one for Free.
             </h4>
           </div>
