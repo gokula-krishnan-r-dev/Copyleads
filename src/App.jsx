@@ -1,20 +1,27 @@
-import { Route, RouterProvider, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import "./App.css"
-import { router } from "./route/route"
-import Layout from "./component/Layout"
 import Setting from "./pages/Setting"
 import Templete from "./pages/Templete"
 import Profile from "./pages/Profile"
+import Layout from "./component/Layout"
+import Signup from "./component/Signup/Signup"
+import Login from "./component/Login/Login"
 function App() {
   return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route path="/setting" element={<Setting />} />
-        <Route path="/template" element={<Templete />} />
-        <Route path="/Profile" element={<Profile />} />
-        <Route path="/dashboard" element={<Profile />} />
-      </Route>
-    </Routes>
+    <div className="">
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/setting" element={<Setting />} />
+          <Route path="/template" element={<Templete />} />
+          <Route path="/Profile" element={<Profile />} />
+          <Route path="/dashboard" element={<Profile />} />
+        </Route>
+      </Routes>
+      <Routes>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </div>
   )
 }
 

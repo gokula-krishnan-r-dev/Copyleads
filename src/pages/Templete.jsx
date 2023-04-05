@@ -60,13 +60,32 @@ const Templete = () => {
       button.classList.toggle("active")
     }
   }
-
+  // text editor
   const removeHighlighters = () => {
     const buttons = document.querySelectorAll(".highlighter-needs-removal")
     buttons.forEach((button) => {
       button.classList.remove("active")
     })
   }
+  const [copySuccess, setCopySuccess] = useState(false)
+  const copyText =
+    "Morbi varius aliquam semper pulvinar etiam metus. Facilisis felis ultrices ipsum enim elit malesuada tristique. Nunc sit risus risus tortor. Purus habitant sagittis facilisi nulla tempus mauris dui vitae. Volutpat tristique odio ultrices tellus aliquam odio."
+
+  const handleClick = () => {
+    setCopySuccess(true)
+    setTimeout(() => setCopySuccess(false), 3000)
+  }
+
+  const copyToClipboard = (text) => {
+    const tempInput = document.createElement("input")
+    tempInput.value = text
+    document.body.appendChild(tempInput)
+    tempInput.select()
+    document.execCommand("copy")
+    document.body.removeChild(tempInput)
+    handleClick()
+  }
+
   return (
     <div className="overflow-y-scroll h-[85%]">
       <div className="px-9 absolute top-6">
@@ -79,7 +98,7 @@ const Templete = () => {
         </div>
       </div>
       <div className=" ">
-        <form className="px-9 flex-col md:flex-row flex mt-2 space-x-0 md:space-x-6">
+        <div className="px-9 flex-col md:flex-row flex mt-2 space-x-0 md:space-x-6">
           <div className="bg-white flex-1 rounded-[18px] px-6">
             {" "}
             <h4 className="text-[18px] mt-2 font-medium leading-[27px] py-3 text-[#48535F]">
@@ -210,6 +229,52 @@ const Templete = () => {
             >
               Submit
             </button>
+            <div className="bg-[#F3F3F2] mt-2 mb-2 px-4 py-4 rounded-[18px]">
+              <h4 className="text-[12px] text-[#48535F] font-normal leading-[18px]">
+                Morbi varius aliquam semper pulvinar etiam metus. Facilisis
+                felis ultrices ipsum enim elit malesuada tristique. Nunc sit
+                risus risus tortor. Purus habitant sagittis facilisi nulla
+                tempus mauris dui vitae. Volutpat tristique odio ultrices tellus
+                aliquam odio.{" "}
+              </h4>
+              <div className="flex items-center justify-between">
+                <div></div>
+                <button
+                  onClick={() => copyToClipboard(copyText)}
+                  className="flex items-center justify-end  bg-[#48535F] px-4 py-1 rounded-[6px] gap-2"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_176_12)">
+                      <path
+                        d="M13.3333 6H7.33333C6.59695 6 6 6.59695 6 7.33333V13.3333C6 14.0697 6.59695 14.6667 7.33333 14.6667H13.3333C14.0697 14.6667 14.6667 14.0697 14.6667 13.3333V7.33333C14.6667 6.59695 14.0697 6 13.3333 6Z"
+                        stroke="white"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M3.3335 10H2.66683C2.31321 10 1.97407 9.85956 1.72402 9.60952C1.47397 9.35947 1.3335 9.02033 1.3335 8.66671V2.66671C1.3335 2.31309 1.47397 1.97395 1.72402 1.7239C1.97407 1.47385 2.31321 1.33337 2.66683 1.33337H8.66683C9.02045 1.33337 9.35959 1.47385 9.60964 1.7239C9.85969 1.97395 10.0002 2.31309 10.0002 2.66671V3.33337"
+                        stroke="white"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_176_12">
+                        <rect width="16" height="16" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+
+                  <span className="text-white"> Copie</span>
+                </button>{" "}
+              </div>
+            </div>
           </div>
           <div className="flex-1 md:mt-0 mt-6">
             <div className="bg-[white] rounded-[18px] relative h-[83%]">
@@ -259,10 +324,10 @@ const Templete = () => {
                     />
                   </svg>
                 </button>
-                <div
+                <button
+                  onClick={() => handleOptionButtonClick("bold")}
                   id="bold"
                   className="option-button format"
-                  onClick={() => handleOptionButtonClick("bold")}
                 >
                   <svg
                     width="18"
@@ -284,7 +349,7 @@ const Templete = () => {
                       stroke-linejoin="round"
                     />
                   </svg>
-                </div>
+                </button>
                 <button>
                   <svg
                     width="18"
@@ -543,9 +608,6 @@ const Templete = () => {
               </div>
               <div className="pt-14 px-4">
                 <div id="text-input" contentEditable="true" />
-                {/* <div contentEditable={true} onInput={handleContentChange}>
-                  {content}
-                </div> */}
               </div>
               <div className="bg-[#48535FA3] absolute bottom-4 px-3 py-1 right-4 rounded-full">
                 <h4 className="text-white text-[10px] font-normal leading-3">
@@ -554,7 +616,7 @@ const Templete = () => {
               </div>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   )

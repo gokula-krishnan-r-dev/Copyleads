@@ -87,10 +87,7 @@ const Sidebar = () => {
         <div className="flex flex-col h-full">
           <div className="flex flex-col flex-grow pt-5 overflow-y-autoborder-r border-gray-50">
             <div className="flex flex-col items-center flex-shrink-0 px-4">
-              <a
-                href="./index.html"
-                className="px-8 text-left focus:outline-none"
-              >
+              <a href="/" className="px-8 text-left focus:outline-none">
                 <h2 className="block p-2 text-2xl font-medium tracking-tighter text-white transition duration-500 ease-in-out transform cursor-pointer hover:text-gray-900">
                   CopyLeads
                 </h2>
