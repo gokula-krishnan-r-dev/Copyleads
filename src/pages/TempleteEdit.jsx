@@ -1,72 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
-const fontList = [
-  "Arial",
-  "Verdana",
-  "Times New Roman",
-  "Garamond",
-  "Georgia",
-  "Courier New",
-  "cursive",
-]
+
 const TempleteEdit = () => {
-  const [fontSize, setFontSize] = useState(3)
-  const [fontName, setFontName] = useState("Arial")
-
-  const modifyText = (command, defaultUi, value) => {
-    document.execCommand(command, defaultUi, value)
-  }
-
-  const handleOptionButtonClick = (command) => {
-    modifyText(command, false, null)
-  }
-
-  const handleAdvancedOptionChange = (command, value) => {
-    modifyText(command, false, value)
-  }
-
-  const handleLinkButtonClick = () => {
-    const userLink = prompt("Enter a URL")
-    if (/http/i.test(userLink)) {
-      modifyText("createLink", false, userLink)
-    } else {
-      const formattedLink = `http://${userLink}`
-      modifyText("createLink", false, formattedLink)
-    }
-  }
-
-  const handleFontNameChange = (event) => {
-    setFontName(event.target.value)
-    modifyText("fontName", false, event.target.value)
-  }
-
-  const handleFontSizeChange = (event) => {
-    setFontSize(event.target.value)
-    modifyText("fontSize", false, event.target.value)
-  }
-
-  const handleHighlighterButtonClick = (event) => {
-    const button = event.target
-    const needsRemoval = button.classList.contains("highlighter-needs-removal")
-    if (needsRemoval) {
-      let alreadyActive = false
-      if (button.classList.contains("active")) {
-        alreadyActive = true
-      }
-      removeHighlighters()
-      if (!alreadyActive) {
-        button.classList.add("active")
-      }
-    } else {
-      button.classList.toggle("active")
-    }
-  }
-  // text editor
-  const removeHighlighters = () => {
-    const buttons = document.querySelectorAll(".highlighter-needs-removal")
-    buttons.forEach((button) => {
-      button.classList.remove("active")
-    })
-  }
   const [copySuccess, setCopySuccess] = useState(false)
   const copyText =
     "Morbi varius aliquam semper pulvinar etiam metus. Facilisis felis ultrices ipsum enim elit malesuada tristique. Nunc sit risus risus tortor. Purus habitant sagittis facilisi nulla tempus mauris dui vitae. Volutpat tristique odio ultrices tellus aliquam odio."
@@ -75,7 +9,13 @@ const TempleteEdit = () => {
     setCopySuccess(true)
     setTimeout(() => setCopySuccess(false), 3000)
   }
-
+  const optionsData2 = [
+    { option: "Frameworks" },
+    { option: "Frameworks" },
+    { option: "Frameworks" },
+    { option: "Frameworks" },
+    { option: "Frameworks" },
+  ]
   const copyToClipboard = (text) => {
     const tempInput = document.createElement("input")
     tempInput.value = text
@@ -85,7 +25,10 @@ const TempleteEdit = () => {
     document.body.removeChild(tempInput)
     handleClick()
   }
-
+  const [weekvisibility, setWeekVisibility] = useState(false)
+  const [weekselectedOption, weeksetSelectedOption] = useState("")
+  const [weekvisibility1, setWeekVisibility1] = useState(false)
+  const [weekselectedOption1, weeksetSelectedOption1] = useState("")
   return (
     <div className="overflow-y-scroll h-[85%]">
       <div className="px-9 absolute top-6">
@@ -97,10 +40,132 @@ const TempleteEdit = () => {
           />
         </div>
       </div>
-      <div className=" ">
+      <div className="flex px-9 items-center justify-between w-[50%] space-x-6 mt-2">
+        {" "}
+        <div className="bg-white rounded-2xl w-[100%]">
+          {" "}
+          <div
+            className=" relative cursor-pointer block bg-[#fff]  w-full px-[16px]   !rounded-[6px]    h-[45px]"
+            onClick={(e) => {
+              setWeekVisibility(!weekvisibility)
+            }}
+          >
+            <div className="selected-option h-full flex items-center relative justify-between  ">
+              <span
+                className="flex !text-[13px] gap-4 items-center"
+                title={
+                  weekselectedOption === "" ? "This Week" : weekselectedOption
+                }
+              >
+                {weekselectedOption === ""
+                  ? "This Week"
+                  : weekselectedOption.length <= 20
+                  ? weekselectedOption
+                  : `${weekselectedOption.slice(0, 20)}...`}
+              </span>
+              <svg
+                className={`${weekvisibility ? "rotate-180" : ""}`}
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="#48535F"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            {weekvisibility && (
+              <div className="options absolute overflow-y-scroll rounded-xl  px-3 top-[50px] left-0 w-full max-h-[209px]  border z-[999]  bg-white  rounded-br-[10px] rounded-bl-[10px] ">
+                <ul>
+                  {optionsData2.map(({ option }, index) => (
+                    <li
+                      key={index}
+                      className={
+                        weekselectedOption === option
+                          ? " h-[37px] mt-3 justify-start items-start flex  text-[#131313] w-[100%] text-[12px] font-play font-[400] leading-[17px] "
+                          : " h-[37px] mt-3 justify-start items-start flex  text-[#131313] w-[100%] text-[12px] font-play font-[400] leading-[17px] "
+                      }
+                      onClick={() => {
+                        weeksetSelectedOption(option)
+                      }}
+                    >
+                      {option}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="bg-white rounded-2xl w-[100%]">
+          {" "}
+          <div
+            className="select relative rounded-[6px] cursor-pointer block bg-[#fff]  w-full px-[16px]       h-[45px]"
+            onClick={(e) => {
+              setWeekVisibility1(!weekvisibility1)
+            }}
+          >
+            <div className="selected-option h-full flex items-center relative justify-between  ">
+              <span
+                className="flex !text-[13px] gap-4 items-center"
+                title={
+                  weekselectedOption1 === "" ? "This Week" : weekselectedOption1
+                }
+              >
+                {weekselectedOption1 === ""
+                  ? "This Week"
+                  : weekselectedOption1.length <= 20
+                  ? weekselectedOption1
+                  : `${weekselectedOption1.slice(0, 20)}...`}
+              </span>{" "}
+              <svg
+                className={`${weekvisibility1 ? "rotate-180" : ""}`}
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="#48535F"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            {weekvisibility1 && (
+              <div className="options absolute rounded-xl  px-3 top-[50px] left-0 w-full max-h-[209px] overflow-y-scroll  border z-[999]  bg-white  rounded-br-[10px] rounded-bl-[10px] ">
+                <ul>
+                  {optionsData2.map(({ option }, index) => (
+                    <li
+                      key={index}
+                      className={
+                        weekselectedOption1 === option
+                          ? " h-[37px] mt-3 justify-start items-start flex  text-[#131313] w-[100%] text-[12px] font-play font-[400] leading-[17px] "
+                          : " h-[37px] mt-3 justify-start items-start flex  text-[#131313] w-[100%] text-[12px] font-play font-[400] leading-[17px] "
+                      }
+                      onClick={() => {
+                        weeksetSelectedOption1(option)
+                      }}
+                    >
+                      {option}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>{" "}
+      <div className="mt-6 ">
         <div className="px-9 flex-col md:flex-row flex mt-2 space-x-0 md:space-x-6">
           <div className="bg-white flex-1 rounded-[18px] px-6">
-            {" "}
             <h4 className="text-[18px] mt-2 font-medium leading-[27px] py-3 text-[#48535F]">
               Template
             </h4>
@@ -324,11 +389,7 @@ const TempleteEdit = () => {
                     />
                   </svg>
                 </button>
-                <button
-                  onClick={() => handleOptionButtonClick("bold")}
-                  id="bold"
-                  className="option-button format"
-                >
+                <button id="bold" className="option-button format">
                   <svg
                     width="18"
                     height="18"

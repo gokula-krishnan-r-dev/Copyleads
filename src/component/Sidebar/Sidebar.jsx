@@ -82,8 +82,8 @@ const sidebardata = [
 const Sidebar = () => {
   const location = useLocation()
   return (
-    <div className="flex overflow-hidden h-full">
-      <div className="hidden md:flex md:flex-shrink-0">
+    <div className="grid pr-5 overflow-hidden h-full">
+      <div className="hidden md:block md:flex-shrink-0">
         <div className="flex flex-col h-full">
           <div className="flex flex-col flex-grow pt-5 overflow-y-autoborder-r border-gray-50">
             <div className="flex flex-col items-center flex-shrink-0 px-4">

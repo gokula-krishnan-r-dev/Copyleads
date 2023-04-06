@@ -8,7 +8,7 @@ const Header = () => {
       <div />
 
       <div className="flex items-center gap-2">
-        <div className="relative bg-white pl-3 focus:outline-none focus:shadow-outline border border-gray-300 rounded-full py-2 px-4 block w-full appearance-none leading-normal">
+        <div className="relative bg-white pl-3 focus:outline-none focus:shadow-outline rounded-full py-2 px-4 block w-full appearance-none leading-normal">
           <svg
             className="absolute top-3 z-20 left-3"
             width="18"
@@ -35,7 +35,7 @@ const Header = () => {
 
           <input
             className="ml-7 outline-none border-none"
-            type="email"
+            type="text"
             placeholder="Search"
           />
         </div>

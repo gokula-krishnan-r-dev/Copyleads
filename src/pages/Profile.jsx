@@ -3,7 +3,7 @@ import React from "react"
 const Profile = () => {
   return (
     <div className="flex items-center justify-center h-[80%] mx-auto">
-      <div className=" bg-[white] flex-col w-[90%] md:w-[46%] px-8 py-6 rounded-[18px] border">
+      <div className=" bg-[white] flex-col w-[90%] xl:w-[467px] md:w-[56%] px-8 py-6 rounded-[18px] border">
         <h3 className="text-[20px] font-semibold leading-8 text-[#48535F]">
           Account Settings
         </h3>
