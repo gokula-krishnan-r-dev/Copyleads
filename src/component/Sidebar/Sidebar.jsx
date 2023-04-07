@@ -101,11 +101,11 @@ const Sidebar = () => {
                     <li key={index}>
                       <a
                         href={value.link}
-                        className={`inline-flex items-center  w-full px-4 py-3 mt-1 text-base text-gray-900 ${
+                        className={`inline-flex hover:border-l-2 hover:bg-[#D9D9D912] hover:border-[#37404A] items-center  w-full px-4 py-3 mt-1 text-base text-gray-900 ${
                           location.pathname === value.link
                             ? "bg-[#D9D9D912] border-[#37404A]  border-l-2"
                             : null
-                        } transition duration-500 ease-in-out transform rounded-r-lg  focus:shadow-outline`}
+                        }  rounded-r-lg  focus:shadow-outline`}
                       >
                         {value.icon}
                         <span className="ml-4 text-white text-base font-medium leading-6">
@@ -123,7 +123,7 @@ const Sidebar = () => {
                 </div>
               </nav>
             </div>
-            <div className="flex items-center border px-5  rounded-[6px] justify-center py-2 mx-auto">
+            <div className="flex items-center border px-5 hover:bg-[#8AB6A2] transition-all hover:border-none  rounded-[6px] justify-center py-2 mx-auto">
               <a href="#" className="flex-shrink-0 block w-full group">
                 <div className="flex  items-center">
                   <div>

@@ -9,7 +9,7 @@ const Layout = () => {
       <div className=" md:block hidden h-screen flex-[0.25] ">
         <Sidebar />
       </div>
-      <div className="flex-1 bg-[#F3F3F2] rounded-none md:rounded-l-[30px] h-screen">
+      <div className="flex-1 bg-[#F3F3F2] md:overflow-auto overflow-y-scroll rounded-none md:rounded-l-[30px] h-screen">
         <Header />
         <Outlet />
       </div>

@@ -4,8 +4,37 @@ const Header = () => {
   const location = useLocation()
 
   return (
-    <div className="flex items-center px-6 py-4 justify-between">
-      <div />
+    <div className="flex  items-center px-6 py-4 justify-between">
+      <div className="hidden md:block" />
+      <div className=" mr-2 md:hidden  bg-[#8AB6A2] w-12 max-[425px]:w-[65px] h-12 flex items-center justify-center rounded-full">
+        <svg
+          width={24}
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            {" "}
+            <g id="Menu / Menu_Alt_03">
+              {" "}
+              <path
+                id="Vector"
+                d="M5 17H13M5 12H19M5 7H13"
+                stroke="#fff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>{" "}
+            </g>{" "}
+          </g>
+        </svg>
+      </div>
 
       <div className="flex items-center gap-2">
         <div className="relative bg-white pl-3 focus:outline-none focus:shadow-outline rounded-full py-2 px-4 block w-full appearance-none leading-normal">
@@ -34,7 +63,7 @@ const Header = () => {
           </svg>
 
           <input
-            className="ml-7 outline-none border-none"
+            className="ml-7 md:w-auto w-[50%] outline-none border-none"
             type="text"
             placeholder="Search"
           />
