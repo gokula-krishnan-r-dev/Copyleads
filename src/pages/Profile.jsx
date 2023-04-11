@@ -49,7 +49,7 @@ const Profile = () => {
             placeholder="Email"
           />
         </div>
-        <button className="py-2 mb-3 hover:border-[1.5px] hover:border-[#8AB6A2] hover:bg-[white] transition-all hover:text-[#000] mt-3 rounded-[6px] w-full text-[14px] leading-5 font-normal text-white bg-[#8AB6A2] px-6">
+        <button className="py-2 mb-3 border-[1.5px] border-[#8AB6A2]  hover:border-[1.5px] hover:border-[#8AB6A2] hover:bg-[white] transition-all hover:text-[#000] mt-3 rounded-[6px] w-full text-[14px] leading-5 font-normal text-white bg-[#8AB6A2] px-6">
           Save Changes
         </button>
       </div>

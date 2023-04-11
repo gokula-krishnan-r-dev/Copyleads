@@ -7,6 +7,7 @@ import Layout from "./component/Layout"
 import Signup from "./component/Signup/Signup"
 import Login from "./component/Login/Login"
 import TempleteEdit from "./pages/TempleteEdit"
+import Dashboard from "./component/Dashboard/Dashboard"
 function App() {
   return (
     <div className="">
@@ -15,7 +16,7 @@ function App() {
           <Route path="/setting" element={<Setting />} />
           <Route path="/template" element={<Templete />} />
           <Route path="/Profile" element={<Profile />} />
-          <Route path="/dashboard" element={<Profile />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/templeteedit" element={<TempleteEdit />} />
         </Route>
       </Routes>

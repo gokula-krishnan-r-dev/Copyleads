@@ -42,7 +42,7 @@ const Setting = () => {
               </a>
             </h6>
           </div>
-          <button className="py-3 rounded-[6px] hover:border-[1.5px] hover:border-[#8AB6A2] hover:bg-[white] transition-all hover:text-[#000] text-base leading-5 font-medium text-white bg-[#8AB6A2] px-6">
+          <button className="py-3 rounded-[6px] border-[1.5px] border-[#8AB6A2] hover:border-[1.5px] hover:border-[#8AB6A2] hover:bg-[white] transition-all hover:text-[#000] text-base leading-5 font-medium text-white bg-[#8AB6A2] px-6">
             Upgrade Plan
           </button>
         </div>
@@ -64,7 +64,7 @@ const Setting = () => {
               className="my-2 pl-4 bg-[#F3F3F2] outline-none text-[#48535FAD] text-sm rounded-lg   block w-full p-2.5 "
             />
           </div>
-          <button className="py-3  mt-1 rounded-[6px] hover:border-[1.5px] hover:border-[#8AB6A2] hover:bg-[white] transition-all hover:text-[#000] text-base leading-5 font-medium text-white bg-[#8AB6A2] px-6">
+          <button className="py-3 border-[1.5px] border-[#8AB6A2]  mt-1 rounded-[6px] hover:border-[1.5px] hover:border-[#8AB6A2] hover:bg-[white] transition-all hover:text-[#000] text-base leading-5 font-medium text-white bg-[#8AB6A2] px-6">
             Save Changes
           </button>
         </div>
