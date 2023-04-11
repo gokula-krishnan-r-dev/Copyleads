@@ -1,7 +1,15 @@
 import React, { useState } from "react"
-
+import Modal from "react-modal"
 const Setting = () => {
   const [comfirmation, setConfirmation] = useState(false)
+  const customStyles = {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  }
   return (
     <div className=" flex items-center mb-12 md:mb-0 justify-center md:px-0 px-6  ">
       <div className="bg-white w-full sm:w-[80%] md:w-[80%] xl:w-[621px] py-5 rounded-lg px-4 md:px-8">
@@ -83,60 +91,80 @@ const Setting = () => {
             Delete my account
           </button>
           {comfirmation && (
-            <div className="fixed flex z-50 bg-[#3d3c3c3b] items-center justify-center mx-auto top-0 left-0 right-0 bottom-0">
-              <div className="bg-white rounded-[10px] px-6 py-6 w-[80%] lg:w-[400px] md:w-[30%]">
-                <div className="flex items-center justify-between">
-                  <h4>Demo</h4>
-                  <svg
-                    className="cursor-pointer"
-                    onClick={() => setConfirmation(false)}
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-                      stroke="#37404A"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M15 9L9 15"
-                      stroke="#37404A"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M9 9L15 15"
-                      stroke="#37404A"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </div>
-                <div className="py-3">
-                  <p className="text-[12px] font-normal">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Porro adipisci, ullam commodi repellendus inventore modi
-                    delectus rerum atque unde incidunt illo sit temporibus nulla
-                    voluptatem, quisquam illum? Labore, molestiae nostrum.
-                  </p>
-                </div>
-                <div className="flex items-center justify-between">
-                  <button className="text-[#48535F] text-[14px] font-medium">
-                    Cancel
-                  </button>
-                  <button
-                    onClick={() => setConfirmation(false)}
-                    className="text-[#fff] text-[14px] font-medium bg-[#8AB6A2] px-8 rounded-lg py-1"
-                  >
-                    OK
-                  </button>
+            <Modal
+              shouldCloseOnOverlayClick={true}
+              center
+              overlayClassName=""
+              className="bg-transparent flex items-center justify-center mx-auto fixed right-0 left-0 z-50 bottom-0 top-0"
+              isOpen={() => setConfirmation(!comfirmation)}
+              onRequestClose={() => setConfirmation(false)}
+              style={{
+                overlay: {
+                  backgroundColor: "rgb(0 0 0 / 25%)",
+                },
+                content: customStyles,
+              }}
+              contentLabel="upgrade Modal"
+            >
+              <div className="flex z-50 items-center justify-center mx-auto">
+                <div className="bg-white rounded-[10px] px-6 py-6 w-[80%] lg:w-[400px] md:w-[30%]">
+                  <div className="flex items-center justify-between">
+                    <h4>Demo</h4>
+                    <svg
+                      className="cursor-pointer"
+                      onClick={() => setConfirmation(false)}
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                        stroke="#37404A"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M15 9L9 15"
+                        stroke="#37404A"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M9 9L15 15"
+                        stroke="#37404A"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div className="py-3">
+                    <p className="text-[12px] font-normal">
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                      Porro adipisci, ullam commodi repellendus inventore modi
+                      delectus rerum atque unde incidunt illo sit temporibus
+                      nulla voluptatem, quisquam illum? Labore, molestiae
+                      nostrum.
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <button
+                      onClick={() => setConfirmation(false)}
+                      className="text-[#48535F] text-[14px] font-medium"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      onClick={() => setConfirmation(false)}
+                      className="text-[#fff] text-[14px] font-medium bg-[#8AB6A2] px-8 rounded-lg py-1"
+                    >
+                      OK
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Modal>
           )}
         </div>
       </div>

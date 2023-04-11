@@ -79,6 +79,7 @@ const sidebardata = [
     ),
   },
 ]
+
 const Sidebar = () => {
   const location = useLocation()
   return (
@@ -96,7 +97,6 @@ const Sidebar = () => {
             <div className="flex flex-col flex-grow px-0 ml-6 mt-14">
               <nav className="flex-1 space-y-1 ">
                 <ul>
-                  {console.log(location.pathname)}
                   {sidebardata.map((value, index) => (
                     <li key={index}>
                       <a
