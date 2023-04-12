@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useState } from "react"
 import { useLocation } from "react-router-dom"
+import Modal from "react-modal"
 const sidebardata = [
   {
     title: "Dashboard",
@@ -82,6 +83,34 @@ const sidebardata = [
 
 const Sidebar = () => {
   const location = useLocation()
+  const [InviteOpen, setInviteOpen] = useState()
+  function openModal() {
+    setInviteOpen(true)
+  }
+  const copyToClipboard = (text) => {
+    const tempInput = document.createElement("input")
+    tempInput.value = text
+    document.body.appendChild(tempInput)
+    tempInput.select()
+    document.execCommand("copy")
+    document.body.removeChild(tempInput)
+    handleClick()
+  }
+  const [copySuccess, setCopySuccess] = useState(false)
+
+  const handleClick = () => {
+    setCopySuccess(true)
+    setTimeout(() => setCopySuccess(false), 3000)
+  }
+  const copyText = "copyleads.ai/invite/542364"
+  const customStyles = {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  }
   return (
     <div className="grid pr-5 overflow-hidden h-full">
       <div className="hidden md:block md:flex-shrink-0">
@@ -125,7 +154,7 @@ const Sidebar = () => {
             </div>
             <div className="flex items-center border px-5 hover:bg-[#8AB6A2] transition-all hover:border-none  rounded-[6px] justify-center py-2 mx-auto">
               <a href="#" className="flex-shrink-0 block w-full group">
-                <div className="flex  items-center">
+                <button onClick={openModal} className="flex  items-center">
                   <div>
                     <svg
                       width="18"
@@ -165,8 +194,185 @@ const Sidebar = () => {
                       Invite Friends
                     </p>
                   </div>
-                </div>
+                </button>
               </a>
+              <Modal
+                shouldCloseOnOverlayClick={true}
+                center
+                overlayClassName=""
+                className="bg-transparent flex items-center justify-center mx-auto fixed right-0 left-0 z-50 bottom-0 top-0"
+                isOpen={InviteOpen}
+                onRequestClose={() => setInviteOpen(false)}
+                style={{
+                  overlay: {
+                    backgroundColor: "rgb(0 0 0 / 12%)",
+                  },
+                  content: customStyles,
+                }}
+                contentLabel="upgrade Modal"
+              >
+                <div className="flex z-50 items-center justify-center mx-auto">
+                  <div className="bg-[#F3F3F2] rounded-[18px] px-6 py-6 w-[100%] lg:w-[400px] md:w-[400px]">
+                    <div className="flex items-center mt-2 justify-between">
+                      <h4 className=" text-base font-medium leading-6 text-[#48535F]">
+                        Invite Friends and earn credits
+                      </h4>
+
+                      <svg
+                        className="cursor-pointer"
+                        onClick={() => setInviteOpen(false)}
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                          stroke="#37404A"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M15 9L9 15"
+                          stroke="#37404A"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M9 9L15 15"
+                          stroke="#37404A"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                    <h3 className="font-normal text-sm leading-[21px] text-[#48535F]">
+                      Share on Social Media
+                    </h3>
+                    <div className="py-2 flex space-x-2 mt-4">
+                      <div className="bg-[#8AB6A2] px-5 py-3 rounded-[6px]">
+                        <svg
+                          width="13"
+                          height="22"
+                          viewBox="0 0 13 22"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M12 1H9C7.67392 1 6.40215 1.52678 5.46447 2.46447C4.52678 3.40215 4 4.67392 4 6V9H1V13H4V21H8V13H11L12 9H8V6C8 5.73478 8.10536 5.48043 8.29289 5.29289C8.48043 5.10536 8.73478 5 9 5H12V1Z"
+                            stroke="white"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </div>
+                      <div className="bg-[#8AB6A2] px-4 py-3 rounded-[6px]">
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M17 2H7C4.23858 2 2 4.23858 2 7V17C2 19.7614 4.23858 22 7 22H17C19.7614 22 22 19.7614 22 17V7C22 4.23858 19.7614 2 17 2Z"
+                            stroke="white"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M16 11.37C16.1234 12.2022 15.9813 13.0522 15.5938 13.799C15.2063 14.5458 14.5932 15.1514 13.8416 15.5297C13.0901 15.9079 12.2385 16.0396 11.4078 15.9059C10.5771 15.7723 9.80977 15.3801 9.21485 14.7852C8.61993 14.1902 8.22774 13.4229 8.09408 12.5922C7.96042 11.7615 8.09208 10.9099 8.47034 10.1584C8.8486 9.40685 9.4542 8.79374 10.201 8.40624C10.9478 8.01874 11.7978 7.87658 12.63 8C13.4789 8.12588 14.2649 8.52146 14.8717 9.1283C15.4785 9.73515 15.8741 10.5211 16 11.37Z"
+                            stroke="white"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M17.5 6.5H17.51"
+                            stroke="white"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </div>
+                      <div className="bg-[#8AB6A2] px-4 py-3 rounded-[6px]">
+                        <svg
+                          width="24"
+                          height="21"
+                          viewBox="0 0 24 21"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M23 2C22.0424 2.67548 20.9821 3.19211 19.86 3.53C19.2577 2.83751 18.4573 2.34669 17.567 2.12393C16.6767 1.90116 15.7395 1.9572 14.8821 2.28445C14.0247 2.61171 13.2884 3.1944 12.773 3.95372C12.2575 4.71303 11.9877 5.61234 12 6.53V7.53C10.2426 7.57557 8.50127 7.18581 6.93101 6.39545C5.36074 5.60508 4.01032 4.43864 3 3C3 3 -1 12 8 16C5.94053 17.398 3.48716 18.0989 1 18C10 23 21 18 21 6.5C20.9991 6.22145 20.9723 5.94359 20.92 5.67C21.9406 4.66349 22.6608 3.39271 23 2Z"
+                            stroke="white"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                    <h4 className="font-medium text-base leading-6 text-[#48535F]">
+                      Or
+                    </h4>
+                    <div className="flex mt-2 flex-col ">
+                      <h4 className="font-normal text-sm leading-[21px] text-[#48535F]">
+                        Copy link directly :
+                      </h4>
+                      <div className="bg-white mt-2 flex items-center justify-between py-1 px-4 rounded-md ">
+                        <h4 className="font-light text-sm leading-[21px] text-[#48535F]">
+                          copyleads.ai/invite/542364
+                        </h4>
+                        <button
+                          onClick={() => copyToClipboard(copyText)}
+                          className="bg-[#8AB6A2] px-3 py-2 rounded-md"
+                        >
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <g clip-path="url(#clip0_39_396)">
+                              <path
+                                d="M13.3333 6H7.33333C6.59695 6 6 6.59695 6 7.33333V13.3333C6 14.0697 6.59695 14.6667 7.33333 14.6667H13.3333C14.0697 14.6667 14.6667 14.0697 14.6667 13.3333V7.33333C14.6667 6.59695 14.0697 6 13.3333 6Z"
+                                stroke="white"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                              <path
+                                d="M3.33331 10H2.66665C2.31302 10 1.97389 9.85953 1.72384 9.60949C1.47379 9.35944 1.33331 9.0203 1.33331 8.66668V2.66668C1.33331 2.31305 1.47379 1.97392 1.72384 1.72387C1.97389 1.47382 2.31302 1.33334 2.66665 1.33334H8.66665C9.02027 1.33334 9.35941 1.47382 9.60946 1.72387C9.8595 1.97392 9.99998 2.31305 9.99998 2.66668V3.33334"
+                                stroke="white"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                            </g>
+                            <defs>
+                              <clipPath id="clip0_39_396">
+                                <rect width="16" height="16" fill="white" />
+                              </clipPath>
+                            </defs>
+                          </svg>
+                        </button>
+                      </div>
+                      <a
+                        className="font-light text-center mt-3 text-[10px] leading-[15px] text-[#48535F]"
+                        href=""
+                      >
+                        Read Terms & conditions carefully
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </Modal>
             </div>
             <div className="flex items-center justify-center py-2 mx-auto">
               <a href="setting" className="flex-shrink-0 block w-full group">

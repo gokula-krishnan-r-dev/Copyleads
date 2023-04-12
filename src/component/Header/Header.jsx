@@ -99,6 +99,7 @@ const Header = () => {
       setNotificationOpen(false)
     }
   }
+
   return (
     <div
       ref={wrapperRef}

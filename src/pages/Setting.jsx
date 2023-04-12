@@ -107,7 +107,7 @@ const Setting = () => {
               contentLabel="upgrade Modal"
             >
               <div className="flex z-50 items-center justify-center mx-auto">
-                <div className="bg-white rounded-[10px] px-6 py-6 w-[80%] lg:w-[400px] md:w-[30%]">
+                <div className="bg-white rounded-[10px] px-6 py-6 w-[80%] lg:w-[400px] md:w-[50%]">
                   <div className="flex items-center justify-between">
                     <h4>Demo</h4>
                     <svg
