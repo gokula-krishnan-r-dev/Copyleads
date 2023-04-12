@@ -153,7 +153,7 @@ const Folders = () => {
                 onRequestClose={() => setRenameProject(false)}
                 style={{
                   overlay: {
-                    backgroundColor: "rgb(0 0 0 / 6%)",
+                    backgroundColor: "rgb(0 0 0 / 10%)",
                   },
                   content: customStyles,
                 }}

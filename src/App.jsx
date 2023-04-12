@@ -8,6 +8,9 @@ import Signup from "./component/Signup/Signup"
 import Login from "./component/Login/Login"
 import TempleteEdit from "./pages/TempleteEdit"
 import Dashboard from "./component/Dashboard/Dashboard"
+import AOS from "aos"
+import "aos/dist/aos.css"
+AOS.init()
 function App() {
   return (
     <div className="">

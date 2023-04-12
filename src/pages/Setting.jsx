@@ -25,10 +25,10 @@ const Setting = () => {
             monthly Free Plan plan.
           </p>
           <div className="flex items-center justify-between mt-3">
-            <h5 className="text-[14px] font-normal leading-[21px] py-2 text-[#48535F]">
+            <h5 className="md:text-[14px] text-[11px] font-normal leading-[21px] py-2 text-[#48535F]">
               Credits Spent
             </h5>
-            <h6 className="text-[14px] font-normal leading-[21px]  py-2 text-[#48535F]">
+            <h6 className="md:text-[14px] text-[11px] font-normal leading-[21px]  py-2 text-[#48535F]">
               <span>944</span> / <span>2,000</span>
             </h6>
           </div>
@@ -38,12 +38,12 @@ const Setting = () => {
             </div>
           </div>
           <div className="flex items-center justify-between">
-            <h5 className="md:text-[14px] text-[12px] font-normal leading-[21px] py-2 text-[#48535F]">
+            <h5 className="md:text-[14px] text-[11px] font-normal leading-[21px] py-2 text-[#48535F]">
               Credits usage resets on Apr 18, 2023
             </h5>
             <h6 className="underline">
               <a
-                className="md:text-[14px] text-[12px] font-normal leading-[21px] py-2 text-[#48535F]"
+                className="md:text-[14px] text-[11px] font-normal leading-[21px] py-2 text-[#48535F]"
                 href="#"
               >
                 View Credit history

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react"
-import { useLocation } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 const sidebardata = [
   {
     title: "Dashboard",
@@ -144,9 +144,12 @@ const Header = () => {
       {sidebaropen && (
         <div
           onClick={() => setSidebarOpen(false)}
-          className="bg-[#00000046] absolute block z-30 md:hidden top-0 w-full right-0 bottom-0 left-0 "
+          className="bg-[#00000046] !duration-500 !transition-transform absolute block z-30 md:hidden top-0 w-full right-0 bottom-0 left-0"
         >
-          <div className="absolute block z-50 md:hidden top-0 w-[250px] right-0 bottom-0 left-0">
+          <div
+            data-aos={sidebaropen ? "fade-right" : "fade-left"}
+            className="absolute !duration-500 !transition-all block z-50 md:hidden top-0 w-[250px] right-0 bottom-0 left-0"
+          >
             <div className=" flex h-screen bg-[#636D78]">
               <div className="flex flex-col h-full">
                 <div className="flex flex-col flex-grow pt-5 overflow-y-autoborder-r border-gray-50">
@@ -382,7 +385,7 @@ const Header = () => {
       <div className="flex items-center gap-2">
         <div className="relative bg-white pl-3 focus:outline-none focus:shadow-outline rounded-full py-2 px-4 block w-full appearance-none leading-normal">
           <svg
-            className="absolute top-3 z-20 left-3"
+            className="absolute top-3 z-10 left-3"
             width="18"
             height="18"
             viewBox="0 0 18 18"
@@ -443,7 +446,7 @@ const Header = () => {
             </svg>
           </div>
           {Notificationopen && (
-            <div className="absolute z-[999]  scroll-bar overflow-y-scroll max-h-[35%] right-6 max-w-[314px] bg-white rounded-[18px] py-4 top-[75px]">
+            <div className="absolute duration-500 transition-all z-[999]  scroll-bar overflow-y-scroll max-h-[35%] right-6 max-w-[314px] bg-white rounded-[18px] py-4 top-[75px]">
               <div className="">
                 <h3 className="text-[#434B54] px-4  text-[18px] font-normal leading-6">
                   Notifications
@@ -519,13 +522,15 @@ const Header = () => {
           )}
         </div>
         <div className="">
-          <div className="w-12 h-12">
-            <img
-              class="w-12 h-12 rounded-full"
-              src="/Image/Avator.png"
-              alt="Rounded avatar"
-            />
-          </div>
+          <Link to="/profile">
+            <div className="w-12 h-12">
+              <img
+                class="w-12 h-12 rounded-full"
+                src="/Image/Avator.png"
+                alt="Rounded avatar"
+              />
+            </div>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,7 +1,18 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
-
+import Modal from "react-modal"
 const Projects = () => {
+  const [Options, setOptions] = useState(false)
+  const [RenameProject, setRenameProject] = useState(false)
+
+  const customStyles = {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  }
   return (
     <div className="mt-6">
       <div className="flex px-6 md:px-12 items-center justify-between">
@@ -32,19 +43,124 @@ const Projects = () => {
             href="#"
             class="block max-w-full relative md:max-w-sm p-6 bg-white border border-[#8AB6A266] rounded-[18px] "
           >
-            <svg
-              className="absolute top-3 right-3"
-              width="17"
-              height="20"
-              viewBox="0 0 17 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            <button
+              onClick={() => setOptions(Options === index ? null : index)}
+              className="absolute hover:bg-[#D2D2D2] rounded-[5px] top-2.5 right-2.5"
             >
-              <circle cx="8.5" cy="4.75" r="1.5" fill="#46515C" />
-              <circle cx="8.5" cy="9.75" r="1.5" fill="#46515C" />
-              <circle cx="8.5" cy="14.75" r="1.5" fill="#46515C" />
-            </svg>
-
+              <svg
+                className="absolute top-3 right-3"
+                width="17"
+                height="20"
+                viewBox="0 0 17 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="8.5" cy="4.75" r="1.5" fill="#46515C" />
+                <circle cx="8.5" cy="9.75" r="1.5" fill="#46515C" />
+                <circle cx="8.5" cy="14.75" r="1.5" fill="#46515C" />
+              </svg>
+            </button>
+            {Options === index && (
+              <div className=" right-0 absolute top-9 bg-white rounded-[6px] px-2 py-2 z-[1] border">
+                <ul className="space-y-1  not-italic font-normal text-xs leading-[18px] text-[#46515C]">
+                  <li className="hover:bg-[#EAEAEA] duration-300 px-6 py-1 rounded-lg">
+                    <button
+                      onClick={() => {
+                        setRenameProject(!RenameProject)
+                        setOptions(null)
+                      }}
+                    >
+                      Rename
+                    </button>
+                  </li>
+                  <li className="hover:bg-[#EAEAEA] duration-300 px-6 py-1 rounded-md">
+                    Delete
+                  </li>
+                </ul>
+              </div>
+            )}
+            <Modal
+              shouldCloseOnOverlayClick={true}
+              center
+              overlayClassName=""
+              className="bg-transparent flex items-center justify-center mx-auto fixed right-0 left-0 z-[999] bottom-0 top-0"
+              isOpen={RenameProject}
+              onRequestClose={() => setRenameProject(false)}
+              style={{
+                overlay: {
+                  backgroundColor: "rgb(0 0 0 / 10%)",
+                },
+                content: customStyles,
+              }}
+              contentLabel="upgrade Modal"
+            >
+              <div className="flex z-[999]  items-center justify-center mx-auto">
+                <div className="bg-white rounded-[10px] px-6 py-6 w-[100%] lg:w-[400px] md:w-[400px]">
+                  <div className="flex items-center mt-2 justify-between">
+                    <h4>Rename</h4>
+                    <svg
+                      className="cursor-pointer"
+                      onClick={() => setRenameProject(false)}
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                        stroke="#37404A"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M15 9L9 15"
+                        stroke="#37404A"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M9 9L15 15"
+                        stroke="#37404A"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div className="py-2 mt-4">
+                    <div className="relative">
+                      <label
+                        for="Quiz_Type"
+                        class="block mb-2 text-sm font-medium text-[#48535F] "
+                      >
+                        Folder Name
+                      </label>
+                      <input
+                        type="text"
+                        id="New_Folder"
+                        class=" text-sm rounded-lg outline-none bg-[#F3F3F2] block w-full p-2.5 "
+                        placeholder="old Folder "
+                      />
+                    </div>
+                  </div>
+                  <div className="flex space-x-4 items-center">
+                    <button
+                      type="submit"
+                      className="py-2  mt-5 border-[#8AB6A2] border-[1.5px] hover:border-[1.5px] hover:border-[#8AB6A2] hover:bg-[white] duration-300 hover:text-[#000] rounded-[6px]  text-base leading-5 font-normal text-white bg-[#8AB6A2] px-3"
+                    >
+                      Create Folder
+                    </button>
+                    <button
+                      onClick={() => setRenameProject(false)}
+                      type="submit"
+                      className="py-2 mt-5 hover:border-[1.5px] hover:border-[#8AB6A2]  duration-300 hover:text-[#fff] rounded-[6px]  text-base leading-5 font-normal text-black hover:bg-[#8AB6A2] px-6"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </Modal>
             <div className="">
               <div className=" flex items-center w-full">
                 <div className="flex items-center w-full justify-between ">
