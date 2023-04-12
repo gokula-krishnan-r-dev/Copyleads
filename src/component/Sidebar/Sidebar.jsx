@@ -251,7 +251,11 @@ const Sidebar = () => {
                       Share on Social Media
                     </h3>
                     <div className="py-2 flex space-x-2 mt-4">
-                      <div className="bg-[#8AB6A2] px-5 py-3 rounded-[6px]">
+                      <a
+                        target="black"
+                        href="https://www.facebook.com/"
+                        className="bg-[#8AB6A2] px-5 py-3 rounded-[6px]"
+                      >
                         <svg
                           width="13"
                           height="22"
@@ -267,8 +271,12 @@ const Sidebar = () => {
                             stroke-linejoin="round"
                           />
                         </svg>
-                      </div>
-                      <div className="bg-[#8AB6A2] px-4 py-3 rounded-[6px]">
+                      </a>
+                      <a
+                        target="black"
+                        href="https://www.facebook.com/"
+                        className="bg-[#8AB6A2] px-4 py-3 rounded-[6px]"
+                      >
                         <svg
                           width="24"
                           height="24"
@@ -298,8 +306,12 @@ const Sidebar = () => {
                             stroke-linejoin="round"
                           />
                         </svg>
-                      </div>
-                      <div className="bg-[#8AB6A2] px-4 py-3 rounded-[6px]">
+                      </a>
+                      <a
+                        target="black"
+                        href="https://www.facebook.com/"
+                        className="bg-[#8AB6A2] px-4 py-3 rounded-[6px]"
+                      >
                         <svg
                           width="24"
                           height="21"
@@ -315,7 +327,7 @@ const Sidebar = () => {
                             stroke-linejoin="round"
                           />
                         </svg>
-                      </div>
+                      </a>
                     </div>
                     <h4 className="font-medium text-base leading-6 text-[#48535F]">
                       Or

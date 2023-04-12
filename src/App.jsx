@@ -17,7 +17,7 @@ function App() {
           <Route path="/template" element={<Templete />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/templeteedit" element={<TempleteEdit />} />
+          <Route path="/templateedit" element={<TempleteEdit />} />
         </Route>
       </Routes>
       <Routes>

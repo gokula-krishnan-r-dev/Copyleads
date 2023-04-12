@@ -1,8 +1,20 @@
 import React, { useEffect, useRef, useState } from "react"
 import TextEditor from "../component/TextEditor/TextEditor"
-
+const optionsData2 = [
+  { option: "Frameworks1" },
+  { option: "Frameworks2" },
+  { option: "Frameworks3" },
+  { option: "Frameworks4" },
+  { option: "Frameworks5" },
+]
 const TempleteEdit = () => {
   const [copySuccess, setCopySuccess] = useState(false)
+  const [Frameworksvisibility, setFrameworksVisibility] = useState(false)
+  const [FrameworkselectedOption, FrameworksetSelectedOption] = useState("")
+  const [Beforevisibility, setBeforeVisibility] = useState(false)
+  const [BeforeselectedOption, BeforesetSelectedOption] = useState("")
+  const [Voicevisibility, setVoiceVisibility] = useState(false)
+  const [VoiceselectedOption, VoicesetSelectedOption] = useState("")
   const copyText =
     "Morbi varius aliquam semper pulvinar etiam metus. Facilisis felis ultrices ipsum enim elit malesuada tristique. Nunc sit risus risus tortor. Purus habitant sagittis facilisi nulla tempus mauris dui vitae. Volutpat tristique odio ultrices tellus aliquam odio."
 
@@ -10,13 +22,7 @@ const TempleteEdit = () => {
     setCopySuccess(true)
     setTimeout(() => setCopySuccess(false), 3000)
   }
-  const optionsData2 = [
-    { option: "Frameworks1" },
-    { option: "Frameworks2" },
-    { option: "Frameworks3" },
-    { option: "Frameworks4" },
-    { option: "Frameworks5" },
-  ]
+
   const copyToClipboard = (text) => {
     const tempInput = document.createElement("input")
     tempInput.value = text
@@ -26,16 +32,24 @@ const TempleteEdit = () => {
     document.body.removeChild(tempInput)
     handleClick()
   }
-
-  const [Frameworksvisibility, setFrameworksVisibility] = useState(false)
-  const [FrameworkselectedOption, FrameworksetSelectedOption] = useState("")
-  const [Beforevisibility1, setBeforeVisibility1] = useState(false)
-  const [BeforeselectedOption1, BeforesetSelectedOption1] = useState("")
-  const [Voicevisibility1, setVoiceVisibility1] = useState(false)
-  const [VoiceselectedOption3, VoicesetSelectedOption3] = useState("")
-
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setVoiceVisibility(false)
+          setBeforeVisibility(false)
+        }
+      }
+      document.addEventListener("mousedown", handleClickOutside)
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside)
+      }
+    }, [ref])
+  }
+  const wrapperRef = useRef(null)
+  useOutsideAlerter(wrapperRef)
   return (
-    <div className="overflow-y-scroll h-full mb-12 md:mb-0 md:h-[85%]">
+    <div className="overflow-y-scroll h-[85%] md:mb-0 md:h-[85%]">
       <form action="">
         <div className=" px-6 md:px-9 md:absolute top-6">
           <div className="">
@@ -56,17 +70,17 @@ const TempleteEdit = () => {
                 setFrameworksVisibility(!Frameworksvisibility)
               }}
             >
-              <div className="selected-option h-full flex items-center relative justify-between  ">
+              <div className="selected-option pl-2 h-full flex items-center relative justify-between  ">
                 <span
-                  className="flex !text-[13px] gap-4 items-center"
+                  className="flex not-italic font-normal text-xs leading-[18px] text-[#434B54] gap-4 items-center"
                   title={
                     FrameworkselectedOption === ""
-                      ? "This Week"
+                      ? "Frameworks"
                       : FrameworkselectedOption
                   }
                 >
                   {FrameworkselectedOption === ""
-                    ? "This Week"
+                    ? "Frameworks"
                     : FrameworkselectedOption.length <= 20
                     ? FrameworkselectedOption
                     : `${FrameworkselectedOption.slice(0, 20)}...`}
@@ -95,8 +109,8 @@ const TempleteEdit = () => {
                         key={index}
                         className={
                           FrameworkselectedOption === option
-                            ? " h-[37px] mt-3 justify-start items-start flex  text-[#131313] w-[100%] text-[12px] font-play font-[400] leading-[17px] "
-                            : " h-[37px] mt-3 justify-start items-start flex  text-[#131313] w-[100%] text-[12px] font-play font-[400] leading-[17px] "
+                            ? " h-[37px] mt-3 justify-start pl-2 items-start flex   w-[100%]  not-italic font-normal text-xs leading-[18px] text-[#434B54] "
+                            : " h-[37px] mt-3 justify-start pl-2 items-start flex   w-[100%]  not-italic font-normal text-xs leading-[18px] text-[#434B54] "
                         }
                         onClick={() => {
                           FrameworksetSelectedOption(option)
@@ -115,26 +129,26 @@ const TempleteEdit = () => {
             <div
               className="select relative rounded-[6px] cursor-pointer block bg-[#fff]  w-full px-[16px]       h-[45px]"
               onClick={(e) => {
-                setBeforeVisibility1(!Beforevisibility1)
+                setBeforeVisibility(!Beforevisibility)
               }}
             >
-              <div className="selected-option h-full flex items-center relative justify-between  ">
+              <div className="selected-option pl-2 h-full flex items-center relative justify-between  ">
                 <span
-                  className="flex !text-[13px] gap-4 items-center"
+                  className="flex  not-italic font-normal text-xs leading-[18px] text-[#434B54] gap-4 items-center"
                   title={
-                    BeforeselectedOption1 === ""
-                      ? "This Week"
-                      : BeforeselectedOption1
+                    BeforeselectedOption === ""
+                      ? "Before-After-B..."
+                      : BeforeselectedOption
                   }
                 >
-                  {BeforeselectedOption1 === ""
-                    ? "This Week"
-                    : BeforeselectedOption1.length <= 20
-                    ? BeforeselectedOption1
-                    : `${BeforeselectedOption1.slice(0, 20)}...`}
+                  {BeforeselectedOption === ""
+                    ? "Before-After-B..."
+                    : BeforeselectedOption.length <= 20
+                    ? BeforeselectedOption
+                    : `${BeforeselectedOption.slice(0, 20)}...`}
                 </span>{" "}
                 <svg
-                  className={`${Beforevisibility1 ? "rotate-180" : ""}`}
+                  className={`${Beforevisibility ? "rotate-180" : ""}`}
                   width="10"
                   height="6"
                   viewBox="0 0 10 6"
@@ -149,19 +163,19 @@ const TempleteEdit = () => {
                   />
                 </svg>
               </div>
-              {Beforevisibility1 && (
+              {Beforevisibility && (
                 <div className="options absolute rounded-xl  px-3 top-[50px] left-0 w-full max-h-[209px] overflow-y-scroll  border z-[999]  bg-white  rounded-br-[10px] rounded-bl-[10px] ">
                   <ul>
                     {optionsData2.map(({ option }, index) => (
                       <li
                         key={index}
                         className={
-                          BeforeselectedOption1 === option
-                            ? " h-[37px] mt-3 justify-start items-start flex  text-[#131313] w-[100%] text-[12px] font-play font-[400] leading-[17px] "
-                            : " h-[37px] mt-3 justify-start items-start flex  text-[#131313] w-[100%] text-[12px] font-play font-[400] leading-[17px] "
+                          BeforeselectedOption === option
+                            ? " h-[37px] mt-3 justify-start pl-2 items-start flex   w-[100%]  not-italic font-normal text-xs leading-[18px] text-[#434B54] "
+                            : " h-[37px] mt-3 justify-start pl-2 items-start flex   w-[100%]  not-italic font-normal text-xs leading-[18px] text-[#434B54] "
                         }
                         onClick={() => {
-                          BeforesetSelectedOption1(option)
+                          BeforesetSelectedOption(option)
                         }}
                       >
                         {option}
@@ -286,26 +300,26 @@ const TempleteEdit = () => {
                 <div
                   className="select relative rounded-[6px] cursor-pointer block bg-[#F3F3F2]  w-full px-[16px] h-[45px]"
                   onClick={(e) => {
-                    setVoiceVisibility1(!Voicevisibility1)
+                    setVoiceVisibility(!Voicevisibility)
                   }}
                 >
                   <div className="selected-option h-full flex items-center relative justify-between  ">
                     <span
                       className="flex !text-[13px] gap-4 items-center"
                       title={
-                        VoiceselectedOption3 === ""
-                          ? "This Week"
-                          : VoiceselectedOption3
+                        VoiceselectedOption === ""
+                          ? "Select"
+                          : VoiceselectedOption
                       }
                     >
-                      {VoiceselectedOption3 === ""
-                        ? "This Week"
-                        : VoiceselectedOption3.length <= 20
-                        ? VoiceselectedOption3
-                        : `${VoiceselectedOption3.slice(0, 20)}...`}
+                      {VoiceselectedOption === ""
+                        ? "Select"
+                        : VoiceselectedOption.length <= 20
+                        ? VoiceselectedOption
+                        : `${VoiceselectedOption.slice(0, 20)}...`}
                     </span>{" "}
                     <svg
-                      className={`${Voicevisibility1 ? "rotate-180" : ""}`}
+                      className={`${Voicevisibility ? "rotate-180" : ""}`}
                       width="10"
                       height="6"
                       viewBox="0 0 10 6"
@@ -320,19 +334,19 @@ const TempleteEdit = () => {
                       />
                     </svg>
                   </div>
-                  {Voicevisibility1 && (
-                    <div className="options absolute rounded-xl  px-3 top-[50px] left-0 w-full max-h-[209px] overflow-y-scroll  border z-[999]  bg-white  rounded-br-[10px] rounded-bl-[10px] ">
+                  {Voicevisibility && (
+                    <div className="options absolute rounded-xl   px-3 top-[50px] left-0 w-full max-h-[209px] overflow-y-scroll  border z-[999]  bg-white  rounded-br-[10px] rounded-bl-[10px] ">
                       <ul>
                         {optionsData2.map(({ option }, index) => (
                           <li
                             key={index}
                             className={
-                              VoiceselectedOption3 === option
-                                ? " h-[37px] mt-3 justify-start items-start flex  text-[#131313] w-[100%] text-[12px] font-play font-[400] leading-[17px] "
-                                : " h-[37px] mt-3 justify-start items-start flex  text-[#131313] w-[100%] text-[12px] font-play font-[400] leading-[17px] "
+                              VoiceselectedOption === option
+                                ? " h-[37px] mt-3 pl-2 justify-start items-start flex   w-[100%]  not-italic font-normal text-xs leading-[18px] text-[#434B54] "
+                                : " h-[37px] mt-3 pl-2 justify-start items-start flex   w-[100%]  not-italic font-normal text-xs leading-[18px] text-[#434B54] "
                             }
                             onClick={() => {
-                              VoicesetSelectedOption3(option)
+                              VoicesetSelectedOption(option)
                             }}
                           >
                             {option}
@@ -359,7 +373,7 @@ const TempleteEdit = () => {
               </div>
               <button
                 type="submit"
-                className="py-2 mb-5 mt-5 hover:border-[1.5px] hover:border-[#8AB6A2] hover:bg-[white] transition-all hover:text-[#000] rounded-[6px] w-full text-base leading-5 font-normal text-white bg-[#8AB6A2] px-6"
+                className="py-2 mb-5 mt-5 hover:border-[1.5px] hover:border-[#8AB6A2] hover:bg-[white] border-[1.5px] border-[#8AB6A2] transition-all hover:text-[#000] rounded-[6px] w-full text-base leading-5 font-normal text-white bg-[#8AB6A2] px-6"
               >
                 Submit
               </button>
@@ -405,7 +419,10 @@ const TempleteEdit = () => {
                       </defs>
                     </svg>
 
-                    <span className="text-white"> Copie</span>
+                    <span className="text-white">
+                      {" "}
+                      {copySuccess ? "Copy" : "Copy"}
+                    </span>
                   </div>{" "}
                 </div>
               </div>
