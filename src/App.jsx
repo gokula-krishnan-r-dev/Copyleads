@@ -10,6 +10,7 @@ import TempleteEdit from "./pages/TempleteEdit"
 import Dashboard from "./component/Dashboard/Dashboard"
 import AOS from "aos"
 import "aos/dist/aos.css"
+import Payment from "./component/Payment/Payment"
 AOS.init()
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         </Route>
       </Routes>
       <Routes>
+        <Route path="/payment" element={<Payment />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
       </Routes>

@@ -164,3 +164,11 @@ hr {
 .scrollbar::-webkit-scrollbar {
   height: 6px;
 }
+
+.bg-logo {
+  background: radial-gradient(
+    80.57% 256.15% at 50% 50%,
+    #434b54 0%,
+    rgba(67, 75, 84, 0) 100%
+  );
+}
