@@ -84,6 +84,9 @@ const sidebardata = [
 const Sidebar = () => {
   const location = useLocation()
   const [InviteOpen, setInviteOpen] = useState()
+  const [fbHover, setGbHover] = useState(false)
+  const [instaHover, setinstaHover] = useState(false)
+  const [TweetHover, settweetHover] = useState(false)
   function openModal() {
     setInviteOpen(true)
   }
@@ -247,14 +250,16 @@ const Sidebar = () => {
                         />
                       </svg>
                     </div>
-                    <h3 className="font-normal text-sm leading-[21px] text-[#48535F]">
+                    <h3 className="font-normal text-sm leading-[21px] text-[#48535F] ">
                       Share on Social Media
                     </h3>
                     <div className="py-2 flex space-x-2 mt-4">
                       <a
+                        onMouseLeave={() => setGbHover(false)}
+                        onMouseEnter={() => setGbHover(true)}
                         target="black"
                         href="https://www.facebook.com/"
-                        className="bg-[#8AB6A2] px-5 py-3 rounded-[6px]"
+                        className="bg-[#8AB6A2] hover:border-[#8AB6A2] hover:border-[1.5px] border-[1.5px] border-[#8AB6A2] hover:bg-white  duration-500 px-5 py-3 rounded-[6px]"
                       >
                         <svg
                           width="13"
@@ -265,7 +270,7 @@ const Sidebar = () => {
                         >
                           <path
                             d="M12 1H9C7.67392 1 6.40215 1.52678 5.46447 2.46447C4.52678 3.40215 4 4.67392 4 6V9H1V13H4V21H8V13H11L12 9H8V6C8 5.73478 8.10536 5.48043 8.29289 5.29289C8.48043 5.10536 8.73478 5 9 5H12V1Z"
-                            stroke="white"
+                            stroke={fbHover ? "black" : "white"}
                             stroke-width="2"
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -273,11 +278,14 @@ const Sidebar = () => {
                         </svg>
                       </a>
                       <a
+                        onMouseLeave={() => setinstaHover(false)}
+                        onMouseEnter={() => setinstaHover(true)}
                         target="black"
                         href="https://www.facebook.com/"
-                        className="bg-[#8AB6A2] px-4 py-3 rounded-[6px]"
+                        className="bg-[#8AB6A2] hover:border-[#8AB6A2] hover:border-[1.5px] border-[1.5px] border-[#8AB6A2] hover:bg-white duration-500 px-4 py-3 rounded-[6px]"
                       >
                         <svg
+                          className=""
                           width="24"
                           height="24"
                           viewBox="0 0 24 24"
@@ -286,21 +294,21 @@ const Sidebar = () => {
                         >
                           <path
                             d="M17 2H7C4.23858 2 2 4.23858 2 7V17C2 19.7614 4.23858 22 7 22H17C19.7614 22 22 19.7614 22 17V7C22 4.23858 19.7614 2 17 2Z"
-                            stroke="white"
+                            stroke={instaHover ? "black" : "white"}
                             stroke-width="2"
                             stroke-linecap="round"
                             stroke-linejoin="round"
                           />
                           <path
                             d="M16 11.37C16.1234 12.2022 15.9813 13.0522 15.5938 13.799C15.2063 14.5458 14.5932 15.1514 13.8416 15.5297C13.0901 15.9079 12.2385 16.0396 11.4078 15.9059C10.5771 15.7723 9.80977 15.3801 9.21485 14.7852C8.61993 14.1902 8.22774 13.4229 8.09408 12.5922C7.96042 11.7615 8.09208 10.9099 8.47034 10.1584C8.8486 9.40685 9.4542 8.79374 10.201 8.40624C10.9478 8.01874 11.7978 7.87658 12.63 8C13.4789 8.12588 14.2649 8.52146 14.8717 9.1283C15.4785 9.73515 15.8741 10.5211 16 11.37Z"
-                            stroke="white"
+                            stroke={instaHover ? "black" : "white"}
                             stroke-width="2"
                             stroke-linecap="round"
                             stroke-linejoin="round"
                           />
                           <path
                             d="M17.5 6.5H17.51"
-                            stroke="white"
+                            stroke={instaHover ? "black" : "white"}
                             stroke-width="2"
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -308,9 +316,11 @@ const Sidebar = () => {
                         </svg>
                       </a>
                       <a
+                        onMouseLeave={() => settweetHover(false)}
+                        onMouseEnter={() => settweetHover(true)}
                         target="black"
                         href="https://www.facebook.com/"
-                        className="bg-[#8AB6A2] px-4 py-3 rounded-[6px]"
+                        className="bg-[#8AB6A2] hover:border-[#8AB6A2] hover:border-[1.5px] border-[1.5px] border-[#8AB6A2] hover:bg-white duration-500 px-4 py-3 rounded-[6px]"
                       >
                         <svg
                           width="24"
@@ -321,7 +331,7 @@ const Sidebar = () => {
                         >
                           <path
                             d="M23 2C22.0424 2.67548 20.9821 3.19211 19.86 3.53C19.2577 2.83751 18.4573 2.34669 17.567 2.12393C16.6767 1.90116 15.7395 1.9572 14.8821 2.28445C14.0247 2.61171 13.2884 3.1944 12.773 3.95372C12.2575 4.71303 11.9877 5.61234 12 6.53V7.53C10.2426 7.57557 8.50127 7.18581 6.93101 6.39545C5.36074 5.60508 4.01032 4.43864 3 3C3 3 -1 12 8 16C5.94053 17.398 3.48716 18.0989 1 18C10 23 21 18 21 6.5C20.9991 6.22145 20.9723 5.94359 20.92 5.67C21.9406 4.66349 22.6608 3.39271 23 2Z"
-                            stroke="white"
+                            stroke={TweetHover ? "black" : "white"}
                             stroke-width="2"
                             stroke-linecap="round"
                             stroke-linejoin="round"
