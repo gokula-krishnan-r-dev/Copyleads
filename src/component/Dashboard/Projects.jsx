@@ -20,9 +20,12 @@ const Projects = () => {
           Projects
         </h4>
         <div className="flex items-center space-x-2">
-          <h6 className="text-[#434B54] text-[14px] font-normal leading-5">
+          <Link
+            to="/"
+            className="text-[#434B54] text-[14px] font-normal leading-5"
+          >
             All Projects
-          </h6>
+          </Link>
           <svg
             width="32"
             height="8"

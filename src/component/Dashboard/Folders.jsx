@@ -260,7 +260,7 @@ const Folders = () => {
         onRequestClose={() => setCreateProject(false)}
         style={{
           overlay: {
-            backgroundColor: "rgb(0 0 0 / 6%)",
+            backgroundColor: "rgb(0 0 0 / 12%)",
           },
           content: customStyles,
         }}

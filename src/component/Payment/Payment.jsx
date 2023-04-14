@@ -1,14 +1,21 @@
 import React, { useState } from "react"
 const paymentData = [
-  { type: "Annual", price: "$135", Title: "Monthly" },
+  {
+    type: "Annual",
+    price: "$135",
+    Title: "Monthly",
+    date: "3 Months free",
+    subtitle1: "$1254 billed annually",
+    subtitle2: "($456 Saving)",
+  },
   { type: "Monthly", price: "$165", Title: "Year" },
 ]
 const Payment = () => {
-  const [PaymentOption, setPaymentOption] = useState()
+  const [PaymentOption, setPaymentOption] = useState(0)
   console.log(PaymentOption)
   return (
-    <div className="flex md:flex-row flex-col-reverse">
-      <div className="flex-[0.9] mt-6 md:mt-0 relative">
+    <div className="flex md:flex-row flex-col">
+      <div className="md:flex-[0.9] flex-1 relative">
         <div className="">
           <img
             className="h-screen w-full"
@@ -36,11 +43,11 @@ const Payment = () => {
           </h4>
         </div>
         <div className="md:px-12 2xl:px-44 px-6">
-          <h5 className="font-medium text-lg md:text-2xl leading-9 text-black">
+          <h5 className="font-medium py-2 text-lg md:text-2xl leading-9 text-black">
             Access your 7 day free trial
           </h5>
-          <div className="bg-[#636D78] px-8 py-6 rounded-2xl">
-            <h5 className="font-medium text-white text-lg md:text-2xl leading-9 underline">
+          <div className="bg-[#636D78] md:mb-0 mb-12 px-8 py-6 rounded-2xl">
+            <h5 className="font-medium text-white duration-300 text-lg md:text-2xl leading-9 underline">
               {` Business ${PaymentOption === 0 ? "year" : "month"} plan`}
             </h5>
             <h3 className="not-italic py-1 font-medium text-sm md:text-base leading-6 text-white">
@@ -120,29 +127,57 @@ const Payment = () => {
               {paymentData.map((value, index) => (
                 <div
                   onClick={() => setPaymentOption(index)}
-                  className={`bg-[#8AB6A2] ${
-                    PaymentOption === index ? "border-4 border-white" : ""
-                  }  cursor-pointer flex-1 border-4 duration-300 border-[#8AB6A2] pb-1 rounded-[6px] `}
+                  className={` ${
+                    PaymentOption === index ? "bg-[#8AB6A2]" : "bg-white"
+                  }  cursor-pointer flex-1 duration-300 transition-all   pb-1 rounded-[6px] `}
                 >
                   <div className="flex items-center space-x-4 px-6 py-2 mt-1">
-                    <h4 className="not-italic font-medium text-xs leading-[18px] text-white">
+                    <h4
+                      className={`  ${
+                        PaymentOption !== index ? "text-black " : "text-white"
+                      } not-italic font-medium text-xs text-black leading-[18px] `}
+                    >
                       {value.type}
                     </h4>
-                    <div className="bg-white text-[#8AB6A2] font-medium text-[10px] rounded-md py-1 px-3">
-                      3 Months free
+                    <div
+                      className={`${
+                        PaymentOption !== index
+                          ? `text-white font-medium ${
+                              PaymentOption !== 1 ? "!bg-white" : ""
+                            }  text-[10px] rounded-md py-1 px-3 bg-[#8AB6A2]`
+                          : `text-[#8AB6A2] py-1 px-3 bg-white ${
+                              PaymentOption === 1 ? "!bg-[#8AB6A2]" : ""
+                            }  font-medium rounded-md text-[10px]`
+                      }  `}
+                    >
+                      {value?.date}
                     </div>
                   </div>
                   <div className="px-6 py-1">
-                    <h4 className="font-semibold text-[22px] leading-[22px] text-white">
+                    <h4
+                      className={`${
+                        PaymentOption === index
+                          ? "text-white"
+                          : "text-[#8AB6A2]"
+                      } font-semibold text-[22px] leading-[22px] text-[#8AB6A2]`}
+                    >
                       {value.price} <span className="font-medium">/month</span>
                     </h4>
                   </div>
                   <div className="flex px-6 py-2">
-                    <h4 className="font-medium text-[10px] leading-3 text-[#F3F3F2]">
-                      $1254 billed annually
+                    <h4
+                      className={`${
+                        PaymentOption !== index ? "text-black " : "text-white"
+                      } font-medium text-[10px] leading-3 text-[#F3F3F2]`}
+                    >
+                      {value?.subtitle1}
                     </h4>
-                    <h5 className="font-medium text-[10px] leading-3 text-[#F3F3F2]">
-                      ($456 Saving)
+                    <h5
+                      className={`${
+                        PaymentOption !== index ? "text-black " : "text-white"
+                      } font-medium text-[10px] leading-3 text-[#F3F3F2]`}
+                    >
+                      {value?.subtitle2}
                     </h5>
                   </div>
                 </div>
