@@ -51,7 +51,7 @@ const Projects = () => {
               className="absolute hover:bg-[#D2D2D2] rounded-[5px] top-2.5 right-2.5"
             >
               <svg
-                className="absolute top-3 right-3"
+                className="absolute top-3 hover:bg-[#D2D2D2] rounded-md right-3"
                 width="17"
                 height="20"
                 viewBox="0 0 17 20"

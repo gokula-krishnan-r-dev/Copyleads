@@ -53,12 +53,12 @@ const Templete = () => {
           ))}
         </div>
         {Tabselection === 0 && (
-          <div className="grid lg:grid-cols-[repeat(4,1fr)] md:grid-cols-[repeat(2,1fr)] grid-cols-[repeat(1,1fr)] gap-x-4 gap-y-4">
+          <div className="grid lg:grid-cols-[repeat(4,1fr)] md:grid-cols-[repeat(2,1fr)] grid-cols-[repeat(1,1fr)] gap-x-4 gap-y-6 md:gap-y-4">
             {Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12).map(
               (value, index) => (
                 <Link
                   href="#"
-                  class="block max-w-full md:max-w-sm p-6 bg-white border border-[#8AB6A266] rounded-[18px] shadow"
+                  class="block max-w-full md:max-w-sm p-6 bg-white border border-[#8AB6A266] rounded-[18px] "
                 >
                   <div onClick={openModal} className="">
                     <div className=" flex items-center w-full">

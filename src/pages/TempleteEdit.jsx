@@ -389,7 +389,7 @@ const TempleteEdit = () => {
                   <div></div>
                   <div
                     onClick={() => copyToClipboard(copyText)}
-                    className="flex items-center cursor-pointer justify-end  bg-[#48535F] px-4 py-1 rounded-[6px] gap-2"
+                    className="flex items-center cursor-pointer justify-end  bg-[#48535F] px-4 py-2 rounded-[6px] gap-2"
                   >
                     <svg
                       width="16"
@@ -419,10 +419,10 @@ const TempleteEdit = () => {
                       </defs>
                     </svg>
 
-                    <span className="text-white">
+                    {/* <span className="text-white">
                       {" "}
                       {copySuccess ? "Copy" : "Copy"}
-                    </span>
+                    </span> */}
                   </div>{" "}
                 </div>
               </div>

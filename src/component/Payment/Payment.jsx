@@ -15,10 +15,10 @@ const Payment = () => {
   console.log(PaymentOption)
   return (
     <div className="flex md:flex-row flex-col">
-      <div className="md:flex-[0.9] flex-1 relative">
+      <div className="md:flex-[0.9] md:h-auto h-[50vh] flex-1 relative">
         <div className="">
           <img
-            className="h-screen w-full"
+            className="md:h-screen  h-[50vh] w-full"
             src="/Image/PaymentCover.png"
             alt=""
           />
@@ -27,7 +27,7 @@ const Payment = () => {
           <h6 className="text-center text-[22px] leading-[42px] font-medium">
             Join Us
           </h6>
-          <p className="md:text-lg text-[16px] font-normal text-center md:text-justify">
+          <p className="md:text-lg md:text-[16px] text-[12px] font-normal text-center md:text-justify">
             CopyLeads.ai is a Lorem ipsum dolor sit amet, consectetur adipiscing
             elit. Suspendisse porta tristique velit, volutpat commodo sapien
             sagittis vitae. Sed sagittis, justo eget ornare commodo, felis ex
